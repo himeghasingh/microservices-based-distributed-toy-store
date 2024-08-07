@@ -1,0 +1,14 @@
+test_query_product_catalog_fail (__main__.TestCatalogService.test_query_product_catalog_fail) ... ok
+test_query_product_catalog_success (__main__.TestCatalogService.test_query_product_catalog_success) ... ok
+test_buy_product_frontend_fail (__main__.TestFrontendService.test_buy_product_frontend_fail) ... ok
+test_buy_product_frontend_sucess (__main__.TestFrontendService.test_buy_product_frontend_sucess) ... ok
+test_leader_failure (__main__.TestFrontendService.test_leader_failure) ... ok
+test_query_product_frontend_fail (__main__.TestFrontendService.test_query_product_frontend_fail) ... ok
+test_query_product_frontend_success (__main__.TestFrontendService.test_query_product_frontend_success) ... ok
+test_place_order_fail (__main__.TestOrderService.test_place_order_fail) ... ok
+test_place_order_success (__main__.TestOrderService.test_place_order_success) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.108s
+
+OK

@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    container_name: ${FRONTEND_HOST}
+    environment:
+      - FRONTEND_HOST=${FRONTEND_HOST}
+      - FRONTEND_LISTENING_PORT=${FRONTEND_LISTENING_PORT}
+      - CATALOG_HOST=${CATALOG_HOST}
+      - CATALOG_LISTENING_PORT=${CATALOG_LISTENING_PORT}
+      - ORDER_HOST=${ORDER_HOST}
+      - ORDER_LISTENING_PORT=${ORDER_LISTENING_PORT}
+
+    ports:
+      - "${FRONTEND_LISTENING_PORT}:${FRONTEND_LISTENING_PORT}"
+    networks:
+      - tanmeg-network
+  
+
+  order:
+    build:
+      context: .
+      dockerfile: order.Dockerfile
+    container_name: ${ORDER_HOST}
+    environment:
+      - ORDER_HOST=${ORDER_HOST}
+      - ORDER_LISTENING_PORT=${ORDER_LISTENING_PORT}
+      - CATALOG_HOST=${CATALOG_HOST}
+      - CATALOG_LISTENING_PORT=${CATALOG_LISTENING_PORT}
+    ports:
+      - "${ORDER_LISTENING_PORT}:${ORDER_LISTENING_PORT}"
+    networks:
+      - tanmeg-network
+    volumes:
+      - ./order/data:/spring24-lab2-spring24-lab2-tanayjoshi2k-himeghasingh/src/order/data
+
+
+  catalog:
+    build:
+      context: .
+      dockerfile: catalog.Dockerfile
+    container_name: ${CATALOG_HOST}
+    environment:
+      - CATALOG_HOST=${CATALOG_HOST}
+      - CATALOG_LISTENING_PORT=${CATALOG_LISTENING_PORT}
+      - ORDER_HOST=${ORDER_HOST}
+      - ORDER_LISTENING_PORT=${ORDER_LISTENING_PORT}
+    ports:
+      - "${CATALOG_LISTENING_PORT}:${CATALOG_LISTENING_PORT}"
+    networks:
+      - tanmeg-network
+    volumes:
+      - ./catalog/data:/spring24-lab2-spring24-lab2-tanayjoshi2k-himeghasingh/src/catalog/data
+
+networks:
+  tanmeg-network: {}
+
